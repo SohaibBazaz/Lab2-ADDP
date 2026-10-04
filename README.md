@@ -102,16 +102,13 @@
 
 
 
-\### Level 0: Context Diagram
+<img width="755" height="2213" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/bcdf64d9-a348-44be-8063-4eef5ec8c226" />
 
+## Task 4: Modular Software Architecture Blueprint
 
+The end-to-end Computer Vision application is deconstructed into four core Python modules. The skeleton interfaces are located in src/core_interfaces.py.
 
-```mermaid
-
-graph TD
-
-&#x20;   Camera\[Camera / Sensor] -->|Raw Video Stream| System\[AI Object Detection System]
-
-&#x20;   System -->|Alerts \& Analytics| Operator\[Security Operator]
-
-&#x20;   System -->|Detection Logs| DB\[(Central Database)]
+DataIngestion: Handles capture_frame() from RTSP streams.
+ImagePreprocessor: Handles preprocess() to resize and normalize numpy arrays.
+ModelInferenceEngine: Handles predict() taking tensors and returning dictionaries of bounding boxes.
+AlertLogger: Handles log_detection() connecting to databases and saving metadata.
